@@ -114,8 +114,15 @@ console.log(uniqued);
 
 // Finding Elements
 function doesWordExist (wordsArray, word) {
-
+  var response = false;
+  wordsArray.forEach(function(w){
+    if (w === word) {
+      response = true;
+    }
+  });
+  return response;
 }
+
 
 var words = [
   "machine",
@@ -136,7 +143,13 @@ console.log(hasDog);
 
 // Counting Repetion
 function howManyTimes (words, word) {
-
+  var count = 0;
+  words.forEach(function(w){
+    if (w === word) {
+      count += 1;
+    }
+  });
+  return count;
 }
 
 var words = [
@@ -161,7 +174,27 @@ console.log(howManyDog);
 
 // Bonus Quest
 function greatestProduct (matrix) {
-
+  var greatest = 0;
+  var product, i,j;
+  //Horizontal
+  for(i = 0; i < 20; i++) {
+    for (j = 0; j < 17; j++) {
+      product = matrix[i][j]* matrix[i][j+1]* matrix[i][j+2] *matrix[i][j+3];
+      if(product > greatest) {
+        greatest = product;
+      }
+    }
+  }
+  //Vertical
+  for(i = 0; i < 17; i++) {
+    for (j = 0; j < 20; j++) {
+      product = matrix[i][j]* matrix[i+1][j]* matrix[i+2][j] *matrix[i+3][j];
+      if(product > greatest) {
+        greatest = product;
+      }
+    }
+  }
+  return greatest;
 }
 
 var matrix = [
